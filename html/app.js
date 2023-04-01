@@ -1,37 +1,3 @@
-
-
-
-
-
-
-document.onkeyup = function (data) {
-  if (data.key == 'Escape') {
-    closeMenu()
-  }
-};
-
-function closeMenu() {
-  $("#openmenu").fadeOut(550);
-  $.post('https://ks-carhud/closeMenu');
-}
-
-
-$(document).ready(function () {
-  window.addEventListener("message", function (event) {
-    switch (event.data.action) {
-    case "open":
-      Open(event.data);
-      break;
-    }
-  });
-});
-
-
-
-// MONEY HUD
-
-
-
 // PLAYER HUD
 
 const playerHud = {
@@ -139,6 +105,3 @@ const vehHud = {
 const app3 = Vue.createApp(vehHud);
 app3.use(Quasar);
 app3.mount("#veh-container");
-
-// COMPASS HUD
-
