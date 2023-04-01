@@ -3,6 +3,11 @@ local Translations = {
         unavailable = "Cruise control unavailable",
         activated = "Cruise Activated: ",
         deactivated = "Cruise Deactivated"
+    },
+    seatbelt = {
+        use_harness_progress = "Attaching Race Harness",
+        remove_harness_progress = "Removing Race Harness",
+        no_car = "You're not in a car."
     }
 }
 

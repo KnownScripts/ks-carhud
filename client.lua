@@ -118,7 +118,17 @@ end)
 
 
 
+RegisterNetEvent('hud:client:ToggleShowSeatbelt', function()
+    showSeatbelt = not showSeatbelt
+end)
 
+RegisterNetEvent('seatbelt:client:ToggleSeatbelt', function() -- Triggered in smallresources in qbcore
+    seatbeltOn = not seatbeltOn
+end)
+
+RegisterNetEvent('seatbelt:client:ToggleCruise', function() -- Triggered in smallresources in qbcore
+    cruiseOn = not cruiseOn
+end)
 
 RegisterNUICallback('showFuelAlert', function(_, cb)
     Wait(50)
@@ -176,6 +186,7 @@ local function updatePlayerHud(data)
             action = 'hudtick',
             show = data[1],
             speed = data[2],
+            cruise = data[3],
         })
     end
 end
@@ -239,6 +250,7 @@ CreateThread(function()
             updatePlayerHud({
                 show,
                 math.ceil(GetEntitySpeed(vehicle) * speedMultiplier),
+                cruiseOn,
                 -1,
             })
             end
@@ -261,6 +273,7 @@ CreateThread(function()
                     getFuelLevel(vehicle),
                     math.ceil(GetEntityCoords(player).z * 0.5),
                     showAltitude,
+                    cruiseOn,
                     showSeatbelt,
                 })
                 showAltitude = false
