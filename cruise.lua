@@ -103,10 +103,7 @@ Citizen.CreateThread(function()
             local player = GetPlayerPed(-1)
             local position = GetEntityCoords(player)
 
-            -- Update time text string
-            local hour = GetClockHours()
-            local minute = GetClockMinutes()
-            timeText = ("%.2d"):format((hour == 0) and 12 or hour) .. ":" .. ("%.2d"):format( minute) .. ((hour < 12) and " AM" or " PM")
+            
 
             -- Get heading and zone from lookup tables and street name from hash
             local heading = directions[math.floor((GetEntityHeading(player) + 22.5) / 45.0)]
