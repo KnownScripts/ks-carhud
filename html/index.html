@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta id="viewport" name="viewport" content ="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+        <link rel="stylesheet" type="text/css" href="responsive.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/quasar@2.1.0/dist/quasar.prod.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.13.0/css/all.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/quasar@2.1.0/dist/quasar.umd.prod.js" defer></script>
+        <script src="app.js" defer></script>
+    </head>
+    <body>
+    
+        <div id="veh-container">
+            <div v-show="show">
+                <div class="responsive" id="speedometer">
+                    <q-circular-progress class="q-ml-xl" style="transform: rotate(-150deg); opacity: 60%;" :value="speedometer" size="80px" :thickness="0.26" color="gauge" :min="0" :max="100"></q-circular-progress>
+                    <q-circular-progress class="q-ml-xl" style="transform: rotate(-150deg); left: -50%;" show-value :value="speed" size="80px" :thickness="0.26" color="gauge2" :min="0" :max="600">
+                    <speed>{{(speed)}}</speed>
+                </div>
+                <div class="responsive" id="fuelgauge">
+                    <q-circular-progress class="q-ml-xl" style="transform: rotate(-125deg); opacity: 60%; left: 43%;" :value="fuelgauge" size="70px" :thickness="0.24" color="gauge" :min="0" :max="100"></q-circular-progress>
+                    <q-circular-progress class="q-ml-xl" style="transform: rotate(-125deg); left: -9%;" show-value :value="fuel" size="70px" :thickness="0.24" color="green">
+                    <q-icon name="fas fa-gas-pump" style="transform: rotate(125deg);" size="14px" color="green"/>
+                </div>
+                <div class="responsive" id="altitudegauge" v-if="showAltitude">
+                    <q-circular-progress class="q-ml-xl" style="transform: rotate(-135deg); opacity: 60%;" :value="altitudegauge" size="70px" :thickness="0.21" color="gauge" :min="0" :max="100"></q-circular-progress>
+                    <q-circular-progress class="q-ml-xl" style="transform: rotate(-135deg); left: -50%;" show-value :value="altitude" size="70px" :thickness="0.21" color="gauge" :min="0" :max="750">
+                    <altitude>{{(altitude)}}</altitude>
+                </div>
+                <transition name="fade">
+                
+            </div>
+        </div>
+       
+    </body>
+</html>
