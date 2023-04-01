@@ -5,27 +5,6 @@ local screenPosY = 0.882                    -- Y coordinate (top left corner of 
 -- GENERAL PARAMETERS
 local enableController = true               -- Enable controller inputs
 
--- SPEEDOMETER PARAMETERS
-local speedLimit = 100.0                    -- Speed limit for changing speed color
-local speedColorText = {255, 255, 255}      -- Color used to display speed label text
-local speedColorUnder = {255, 255, 255}     -- Color used to display speed when under speedLimit
-local speedColorOver = {255, 96, 96}        -- Color used to display speed when over speedLimit
-
--- FUEL PARAMETERS
-local fuelShowPercentage = true             -- Show fuel as a percentage (disabled shows fuel in liters)
-local fuelWarnLimit = 25.0                  -- Fuel limit for triggering warning color
-local fuelColorText = {255, 255, 255}       -- Color used to display fuel text
-local fuelColorOver = {255, 255, 255}       -- Color used to display fuel when good
-local fuelColorUnder = {255, 96, 96}        -- Color used to display fuel warning
-
--- SEATBELT PARAMETERS
-local seatbeltInput = 311                   -- Toggle seatbelt on/off with K or DPAD down (controller)
-local seatbeltPlaySound = true              -- Play seatbelt sound
-local seatbeltDisableExit = true            -- Disable vehicle exit when seatbelt is enabled
-local seatbeltEjectSpeed = 45.0             -- Speed threshold to eject player (MPH)
-local seatbeltEjectAccel = 100.0            -- Acceleration threshold to eject player (G's)
-local seatbeltColorOn = {160, 255, 160}     -- Color used when seatbelt is on
-local seatbeltColorOff = {255, 96, 96}      -- Color used when seatbelt is off
 
 -- CRUISE CONTROL PARAMETERS
 local cruiseInput = 137                     -- Toggle cruise on/off with CAPSLOCK or A button (controller)
@@ -44,7 +23,6 @@ local zones = { ['AIRP'] = "Los Santos International Airport", ['ALAMO'] = "Alam
 local pedInVeh = false
 local timeText = ""
 local locationText = ""
-local currentFuel = 0.0
 
 -- Main thread
 Citizen.CreateThread(function()
@@ -53,7 +31,6 @@ Citizen.CreateThread(function()
     local cruiseSpeed = 999.0
     local prevVelocity = {x = 0.0, y = 0.0, z = 0.0}
     local cruiseIsOn = false
-    local seatbeltIsOn = false
 
     while true do
         -- Loop forever and update HUD every frame
@@ -71,7 +48,6 @@ Citizen.CreateThread(function()
             -- Reset states when not in car
             pedInVeh = false
             cruiseIsOn = false
-            seatbeltIsOn = false
         end
         
         -- Display Location and time when in any vehicle or on foot (if enabled)
@@ -111,7 +87,7 @@ Citizen.CreateThread(function()
                 local cruiseColor = cruiseIsOn and cruiseColorOn or cruiseColorOff
                 drawTxt("LIMITER", 2, cruiseColor, 0.4, screenPosX + 0.040, screenPosY + -0.043)
 
-                -- Draw seatbelt status if not a motorcyle
+                
                 
             end
         end
@@ -142,17 +118,7 @@ Citizen.CreateThread(function()
             locationText = (streetName == "" or streetName == nil) and (locationText) or (locationText .. " | " .. streetName)
             locationText = (zoneNameFull == "" or zoneNameFull == nil) and (locationText) or (locationText .. " | " .. zoneNameFull)
 
-            -- Update fuel when in a vehicle
-            if pedInVeh then
-                local vehicle = GetVehiclePedIsIn(player, false)
-                if fuelShowPercentage then
-                    -- Display remaining fuel as a percentage
-                    currentFuel = 100 * GetVehicleFuelLevel(vehicle) / GetVehicleHandlingFloat(vehicle,"CHandlingData","fPetrolTankVolume")
-                else
-                    -- Display remainign fuel in liters
-                    currentFuel = GetVehicleFuelLevel(vehicle)
-                end
-            end
+        
 
             -- Update every second
             Citizen.Wait(1000)
