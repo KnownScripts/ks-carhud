@@ -1,34 +1,28 @@
 @import url(https://fonts.bunny.net/css?family=aldrich:400);
 
-/* Menu */
 
 
 
 
-/* Hud radial styles */
 
-.text-gauge { color: rgba(70, 70, 70, 0.775); background-color: #6c6c6c8b; }
 
-.text-gauge2 { color: #ee9a24ba; background-color: #6c6c6c8b; }
+
+.text-gauge { color: rgba(184, 184, 184, 0.775); background-color: #6c6c6c8b; }
+
+.text-gauge2 { color: #20ffb1ab; background-color: #6c6c6c8b; }
 
 .text-fuelcolor {color: #15b577;}
 
 .text-fuelColor2 {color: #15b577;}
 
-#main-container {
-  width: 100%;
-  height: auto;
-}
+.text-seatbeltcolor {color: #7a7a7a;}
 
 
-/* Player HUD */
 
-#playerhud {
-  position: absolute;
-  display: flex;
-  left: 3vh;
-  bottom: 0.2vw;
-}
+
+
+
+
 
 .q-ml-xl {
   margin-left: -22px!important; /* Change this to space radials */
@@ -39,11 +33,13 @@
 speed:after {
   content: "KMH"; /* If using KPH change this content from MPH */
   display: block;
+  font-family: 'Aldrich', sans-serif;
   padding-top: 3px;
   padding-left: 2px;
   padding-right: 2px;
   padding-bottom: 8px;
-  font-weight: 700;
+  font-size: 20vh;
+  font-weight: 800;
 }
 
 altitude:after {
@@ -52,18 +48,17 @@ altitude:after {
   padding-top: 10px;
   padding-left: 2px;
   padding-right: 2px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 speed {
   transform: rotate(150deg);
-  font-size: 6.4vh;
+  font-size: 10.4vh;
   position: fixed;
   font-family: 'Aldrich', sans-serif;
-  color: #ffffff; 
+  color: #84de0dc6; 
   text-align: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-weight: 800;
 }
 
 altitude {
@@ -83,24 +78,7 @@ altitude {
   text-align: center;
 }
 
-.square {
-  bottom: 6.30%;
-  width: 29vh;
-  height: 18.5vh;
-  border: 4px solid #666666;
-  position: absolute;
-  display: inline-block;
-}
 
-.circle {
-  bottom: 6.9%;
-  width: 27vh;
-  height: 22.9vh;
-  border: 4px solid #bababa;
-  position: absolute;
-  display: inline-block;
-  border-radius: 50%;
-}
 
 /* Animation */
 .slide-fade-enter-active {
@@ -136,88 +114,3 @@ altitude {
   height: auto;
 }
 
-.street-container {
-  position: relative;
-  top: 0.5vh;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.4vh;
-  letter-spacing: 0.7px;
-  text-decoration: none;
-  font-style: normal;
-  font-variant: small-caps;
-  text-transform: none;
-  font-weight: 800;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6);
-}
-
-.street1 {
-  position: absolute;
-  margin: 0 auto;
-  right: 55%;
-  text-align: right!important;
-  color: rgb(255, 255, 255);
-}
-
-.street2 {
-  position: absolute;
-  margin: 0 auto;
-  left: 55%;
-  text-align: left!important;
-  color: rgb(255, 255, 255);
-}
-
-.pointer {
-  position: absolute;
-  margin: 0 auto;
-  top: -2%;
-  left: 0;
-  right: 0;
-  font-family: 'Yantramanav', sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 2.2vh;
-  text-align: center;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6);
-  z-index: 9999;
-}
-
-.degrees {
-  position: absolute;
-  margin: 0 auto;
-  top: 80%;
-  left: 0;
-  right: 0;
-  opacity: 0.8;
-  font-family: 'Yantramanav', sans-serif;
-  color: rgb(255, 255, 255);
-  font-size: 1.5vh;
-  font-weight: 600;
-  text-align: center;
-  text-shadow: 0 0 1px rgb(0 0 0 / 60%), 0 0 1px rgb(0 0 0 / 60%), 0 0 1px rgb(0 0 0 / 60%), 0 0 1px rgb(0 0 0 / 60%);
-}
-
-.bezel {
-  position: relative;
-  width:100%;
-  height: 2vh;
-  font-family: 'Yantramanav', sans-serif;
-  font-size: 0.35vh;
-  font-weight: 700;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6);
-}
-
-.bearing {
-  position: relative;
-  width:100%;
-  top: -0.5vh;
-  height: 3.5vh;
-  padding-left: 0.12vw;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2.3vh;
-  letter-spacing: 0.7px;
-  text-decoration: none;
-  font-style: normal;
-  font-variant: small-caps;
-  text-transform: none;
-  font-weight: 600;
-  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6), 0 0 1px rgba(0, 0, 0, 0.6);
-}

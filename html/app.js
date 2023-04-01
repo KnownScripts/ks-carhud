@@ -1,40 +1,4 @@
-// PLAYER HUD
 
-const playerHud = {
-  data() {
-    return {
-      
-      speed: 0,
-      
-    };
-  },
-  
-  destroyed() {
-    window.removeEventListener("message", this.listener);
-  },
-  mounted() {
-    this.listener = window.addEventListener("message", (event) => {
-      if (event.data.action === "hudtick") {
-        this.hudTick(event.data);
-      } 
-      // else if(event.data.update) {
-      //   eval(event.data.action + "(" + event.data.show + ')')
-      // }
-    });
-    Config = {};
-  },
-  methods: {
-    hudTick(data) {
-      this.speed = data.speed;
-      if (data.isPaused === 1) {
-        this.show = false;
-      }
-    },
-  },
-};
-const app2 = Vue.createApp(playerHud);
-app2.use(Quasar);
-app2.mount("#ui-container");
 
 // VEHICLE HUD
 

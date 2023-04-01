@@ -264,6 +264,7 @@ CreateThread(function()
                 updatePlayerHud({
                     show,
                     math.ceil(GetEntitySpeed(vehicle) * speedMultiplier),
+                    showSeatbelt,
                 })
                 updateVehicleHud({
                     show,

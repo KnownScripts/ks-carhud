@@ -16,6 +16,7 @@ client_scripts {
     'client.lua',
     'cruise.lua',
     'seatbelt.lua',
+    
 } 
 server_script 'server.lua'
 
@@ -34,3 +35,5 @@ depedencies {
 }
 
 lua54 'yes'
+
+
